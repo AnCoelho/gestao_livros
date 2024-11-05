@@ -41,6 +41,17 @@ INSTALLED_APPS = [
     'biblioteca',  # Nosso app Biblioteca
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Adiciona JWT para autenticação
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'  # Permissões para usuários autenticados e leitura para anônimos
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  # Paginação padrão
+    'PAGE_SIZE': 10,  # Tamanho da página para a paginação
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
